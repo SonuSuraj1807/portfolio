@@ -156,6 +156,7 @@
     <a href="#skills">Skills</a>
     <a href="#internships">Internships</a>
     <a href="#certifications">Certifications</a>
+    <a href="#achievements">Achievements</a>
     <a href="#resume">Resume</a>
     <a href="#contact">Contact</a>
   </aside>
@@ -315,6 +316,44 @@
       </div>
     </div>
 
+    <!-- ACHIEVEMENTS LIST MODAL -->
+    <div class="project-modal" id="achievementsListModal">
+      <div class="project-modal-content">
+        <button class="project-modal-close list-modal-close" aria-label="Close list">×</button>
+        <div class="modal-header" style="text-align: center; margin-bottom: 20px;">
+          <h2 style="color: var(--accent); font-size: 2rem;">All Achievements</h2>
+        </div>
+        <div class="achievements-list-container" id="all-achievements-container">
+          <!-- All achievements injected here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ACHIEVEMENT DETAIL MODAL -->
+    <div class="project-modal" id="achievementDetailModal" style="z-index: 10005;">
+      <div class="project-modal-content">
+        <button class="project-modal-close detail-modal-close" aria-label="Close details">×</button>
+        <div id="achievement-detail-body">
+          <!-- Specific achievement details injected here -->
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements" class="section fade-up">
+      <div class="container">
+        <h2 class="section-title">Achievements</h2>
+        <div class="achievements-grid" id="achievements-container">
+          <!-- First 3 achievements injected here -->
+        </div>
+        <div class="achievements-footer">
+          <button id="show-all-achievements" class="show-all-btn">
+            <i class="fas fa-list-ul"></i> Show All Achievements
+          </button>
+        </div>
+      </div>
+    </section>
 
     <!-- RESUME -->
     <section id="resume" class="section fade-up">

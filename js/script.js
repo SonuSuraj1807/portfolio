@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSkills();
   renderInternships();
   renderCertifications();
+  renderAchievements();
 
   // Re-initialize animations after content is injected
   initScrollAnimations();
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initBackToTop();
   initCertModal();
+  initAchievementsModals();
 });
 
 function renderEducation() {
@@ -503,4 +505,122 @@ function initCertModal() {
   document.addEventListener("keydown", e => {
     if (e.key === "Escape" && modal.classList.contains("active")) closeModal();
   });
+}
+
+/* ======================================================
+   ACHIEVEMENTS RENDERING & MODALS
+====================================================== */
+function renderAchievements() {
+  const container = document.getElementById("achievements-container");
+  if (!container || !window.portfolioData || !window.portfolioData.achievements) return;
+  
+  // Show only first 3
+  const top3 = window.portfolioData.achievements.slice(0, 3);
+  let html = "";
+  
+  top3.forEach((ach, index) => {
+    html += `
+      <div class="achievement-card fade-up" data-index="${index}">
+        <div class="achievement-icon">
+          <i class="${ach.icon}"></i>
+        </div>
+        <span class="date">${ach.date}</span>
+        <h3>${ach.title}</h3>
+        <p>${ach.shortDesc}</p>
+      </div>
+    `;
+  });
+  
+  container.innerHTML = html;
+  
+  // Add detail click listeners to main cards
+  container.querySelectorAll(".achievement-card").forEach(card => {
+    card.addEventListener("click", () => {
+      openAchievementDetail(card.dataset.index);
+    });
+  });
+}
+
+function initAchievementsModals() {
+  const listModal = document.getElementById("achievementsListModal");
+  const detailModal = document.getElementById("achievementDetailModal");
+  const showAllBtn = document.getElementById("show-all-achievements");
+  const allAchContainer = document.getElementById("all-achievements-container");
+  
+  if (!listModal || !detailModal || !showAllBtn || !allAchContainer) return;
+  
+  // Open All Achievements List
+  showAllBtn.addEventListener("click", () => {
+    let listHtml = "";
+    window.portfolioData.achievements.forEach((ach, index) => {
+      listHtml += `
+        <div class="list-achievement-item" data-index="${index}">
+          <h4>${ach.title}</h4>
+          <span>${ach.date}</span>
+        </div>
+      `;
+    });
+    allAchContainer.innerHTML = listHtml;
+    
+    // Add click listeners to items in the list
+    allAchContainer.querySelectorAll(".list-achievement-item").forEach(item => {
+      item.addEventListener("click", () => {
+        openAchievementDetail(item.dataset.index);
+      });
+    });
+    
+    listModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+  
+  // Close buttons
+  listModal.querySelector(".list-modal-close").addEventListener("click", () => {
+    listModal.classList.remove("active");
+    if (!detailModal.classList.contains("active")) document.body.style.overflow = "";
+  });
+  
+  detailModal.querySelector(".detail-modal-close").addEventListener("click", () => {
+    detailModal.classList.remove("active");
+    if (!listModal.classList.contains("active")) document.body.style.overflow = "";
+  });
+  
+  // Global modal close on outside click
+  [listModal, detailModal].forEach(m => {
+    m.addEventListener("click", e => {
+      if (e.target === m) {
+        m.classList.remove("active");
+        if (!listModal.classList.contains("active") && !detailModal.classList.contains("active")) {
+          document.body.style.overflow = "";
+        }
+      }
+    });
+  });
+}
+
+function openAchievementDetail(index) {
+  const detailModal = document.getElementById("achievementDetailModal");
+  const detailBody = document.getElementById("achievement-detail-body");
+  const ach = window.portfolioData.achievements[index];
+  
+  if (!detailModal || !detailBody || !ach) return;
+  
+  detailBody.innerHTML = `
+    <div class="achievement-detail-content">
+      <div class="icon-large"><i class="${ach.icon}"></i></div>
+      <h2>${ach.title}</h2>
+      <span class="detail-date">${ach.date}</span>
+      ${ach.image ? `<img src="${ach.image}" class="achievement-detail-img" alt="Achievement Image">` : ""}
+      <p class="detail-desc">${ach.fullDesc}</p>
+      ${ach.link && ach.link !== "#" ? `
+        <div class="project-meta-links">
+          <a href="${ach.link}" target="_blank" class="dataset-link">
+            <i class="fas fa-external-link-alt"></i> View Achievement
+          </a>
+        </div>
+      ` : ""}
+    </div>
+  `;
+  
+  detailModal.classList.add("active");
+  document.body.style.overflow = "hidden";
 }

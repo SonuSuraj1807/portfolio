@@ -2693,3 +2693,149 @@ body.light .footer-bottom {
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   color: #888;
 }
+/* =========================
+   ACHIEVEMENTS SECTION
+========================= */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.achievement-card {
+  background: var(--glass);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.achievement-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 15px 30px rgba(168, 85, 247, 0.2);
+}
+
+.achievement-icon {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.achievement-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.achievement-card .date {
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.achievement-card p {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+body.light .achievement-card p {
+  color: #444;
+}
+
+.achievements-footer {
+  text-align: center;
+}
+
+.show-all-btn {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 12px 30px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.show-all-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+/* ACHIEVEMENTS LIST MODAL SPECIFIC */
+.achievements-list-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+.list-achievement-item {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.list-achievement-item:hover {
+  background: rgba(168, 85, 247, 0.1);
+  border-color: var(--accent);
+}
+
+.list-achievement-item h4 {
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+
+/* ACHIEVEMENT DETAIL BODY */
+.achievement-detail-content {
+  text-align: center;
+}
+
+.achievement-detail-content .icon-large {
+  font-size: 4rem;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.achievement-detail-content h2 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+.achievement-detail-content .detail-date {
+  font-size: 1rem;
+  color: var(--accent);
+  margin-bottom: 25px;
+  display: block;
+}
+
+.achievement-detail-content .detail-desc {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.achievement-detail-img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}

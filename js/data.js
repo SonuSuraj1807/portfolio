@@ -197,5 +197,56 @@ window.portfolioData = {
             issueDate: "Issued December 2024"
         }
 
+    ],
+
+    /* =========================
+       ACHIEVEMENTS
+    ========================= */
+    achievements: [
+        {
+            title: "Top 10 Finalist in Smart India Hackathon",
+            date: "2024",
+            shortDesc: "Ranked among the top teams in the national-level hackathon for AI-driven solutions.",
+            fullDesc: "Our team developed a smart health monitoring system that predicts potential health risks using machine learning. We were selected from thousands of participants across India to present our solution to the jury.",
+            icon: "fas fa-trophy",
+            image: "images/achievement1.png",
+            link: "#"
+        },
+        {
+            title: "IEEE Xplore Research Publication",
+            date: "2024",
+            shortDesc: "Published a paper on 'Enhanced Data Analysis for Healthcare Systems' in IEEE Xplore.",
+            fullDesc: "Conducted extensive research on how predictive analytics can improve patient care in rural areas. The paper focuses on low-latency data processing and scalable AI models.",
+            icon: "fas fa-book",
+            image: "images/achievement2.png",
+            link: "#"
+        },
+        {
+            title: "Merit Scholarship for Academic Excellence",
+            date: "2023",
+            shortDesc: "Awarded for maintaining a 9.0+ GPA throughout the academic year.",
+            fullDesc: "Recognized for consistent academic performance and leadership qualities at Vignana Bharathi Institute of Technology. This scholarship is awarded to the top 1% of students in each department.",
+            icon: "fas fa-medal",
+            image: "images/achievement3.png",
+            link: "#"
+        },
+        {
+            title: "5-Star Coder on HackerRank",
+            date: "2023",
+            shortDesc: "Achieved 5-star rating in Problem Solving and Python tracks.",
+            fullDesc: "Solved over 300+ challenges involving complex algorithms, data structures, and mathematical modeling. Maintained a consistent problem-solving streak for over 6 months.",
+            icon: "fas fa-star",
+            image: "images/achievement4.png",
+            link: "https://www.hackerrank.com/profile/SonuSuraj1807"
+        },
+        {
+            title: "Winner: Inter-College Data Viz Challenge",
+            date: "2023",
+            shortDesc: "Won first prize for the most insightful dashboard using Tableau.",
+            fullDesc: "Developed a dynamic dashboard that visualized global carbon emissions trends over the last 50 years. The project was praised for its storytelling and data accuracy.",
+            icon: "fas fa-award",
+            image: "images/achievement5.png",
+            link: "#"
+        }
     ]
 };
