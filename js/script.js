@@ -41,7 +41,7 @@ function renderProjects() {
   const container = document.getElementById("projects-container");
   if (!container || !window.portfolioData) return;
   let html = "";
-  window.portfolioData.projects.forEach(project => {
+  window.portfolioData.projects.forEach((project, index) => {
     const tagsHtml = project.tags.map(tag => `<span>${tag}</span>`).join("");
     html += `
       <div class="project-card fade-up">
@@ -55,11 +55,17 @@ function renderProjects() {
           <a href="${project.link}" target="_blank">
             <i class="fab fa-github"></i> GitHub
           </a>
+          <button class="view-project-details" data-index="${index}">
+            <i class="fas fa-info-circle"></i> View Details
+          </button>
         </div>
       </div>
     `;
   });
   container.innerHTML = html;
+
+  // Initialize project modal after injection
+  initProjectModal();
 }
 
 function renderSkills() {
@@ -338,6 +344,108 @@ function initBackToTop() {
   });
   backToTopBtn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+/* ======================================================
+   PROJECT DETAILS MODAL
+====================================================== */
+function initProjectModal() {
+  const modal = document.getElementById("projectDetailsModal");
+  const modalBody = document.getElementById("project-details-body");
+  if (!modal || !modalBody) return;
+  const closeBtn = modal.querySelector(".project-modal-close");
+
+  document.querySelectorAll(".view-project-details").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const index = btn.dataset.index;
+      const project = window.portfolioData.projects[index];
+      if (!project) return;
+
+      // Build Gallery HTML
+      let galleryHtml = "";
+      if (project.gallery && project.gallery.length > 0) {
+        galleryHtml = `
+          <div class="project-gallery">
+            ${project.gallery.map(img => `<img src="${img}" alt="Project Image">`).join("")}
+          </div>
+        `;
+      }
+
+      // Build Video HTML
+      let videoHtml = "";
+      if (project.video) {
+        const isYoutube = project.video.includes("youtube.com") || project.video.includes("youtu.be");
+        if (isYoutube) {
+            // Convert to embed link if needed
+            let embedUrl = project.video;
+            if (project.video.includes("watch?v=")) {
+                embedUrl = project.video.replace("watch?v=", "embed/");
+            } else if (project.video.includes("youtu.be/")) {
+                embedUrl = project.video.replace("youtu.be/", "youtube.com/embed/");
+            }
+            videoHtml = `
+              <div class="project-video-container">
+                <iframe src="${embedUrl}" allowfullscreen></iframe>
+              </div>
+            `;
+        } else {
+            videoHtml = `
+              <div class="project-video-container">
+                <video controls src="${project.video}"></video>
+              </div>
+            `;
+        }
+      }
+
+      // Build Dataset Link
+      let datasetHtml = "";
+      if (project.dataset) {
+        datasetHtml = `
+          <a href="${project.dataset}" target="_blank" class="dataset-link">
+            <i class="fas fa-database"></i> View Dataset
+          </a>
+        `;
+      }
+
+      modalBody.innerHTML = `
+        <div class="project-details-header">
+          <h2>${project.title}</h2>
+          <div class="tags">
+            ${project.tags.map(tag => `<span>${tag}</span>`).join("")}
+          </div>
+        </div>
+        
+        ${videoHtml}
+        ${galleryHtml}
+        
+        <div class="project-full-desc">
+          <p>${project.fullDescription || project.description}</p>
+        </div>
+
+        <div class="project-meta-links">
+          <a href="${project.link}" target="_blank">
+            <i class="fab fa-github"></i> GitHub Repository
+          </a>
+          ${datasetHtml}
+        </div>
+      `;
+
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  function closeModal() {
+    modal.classList.remove("active");
+    modalBody.innerHTML = ""; // Clear content to stop videos if iframe
+    document.body.style.overflow = "";
+  }
+
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && modal.classList.contains("active")) closeModal();
   });
 }
 

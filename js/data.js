@@ -46,28 +46,44 @@ window.portfolioData = {
             image: "images/project1.png",
             description: "An AI-based system that generates personalized diet plans based on age, gender, and lifestyle.",
             tags: ["Python", "LLM", "AI"],
-            link: "https://github.com/SonuSuraj1807/Diet-plan-Generator"
+            link: "https://github.com/SonuSuraj1807/Diet-plan-Generator",
+            video: "", // Add video link here
+            gallery: ["images/project1.png"], // Add more images here
+            dataset: "https://github.com/SonuSuraj1807/Diet-plan-Generator/tree/main/dataset",
+            fullDescription: "A comprehensive AI-driven application that analyzes user data to create tailored nutritional guides. It leverages Large Language Models to interpret dietary requirements and health goals."
         },
         {
             title: "Brain Tumor Detection Using X-Ray Images",
             image: "images/project2.png",
             description: "A machine learning model to identify brain tumors from X-ray images using computer vision techniques.",
             tags: ["Python", "Computer Vision", "ML"],
-            link: "https://github.com/SonuSuraj1807/Identifying-brain-tumors-using-x-ray-images"
+            link: "https://github.com/SonuSuraj1807/Identifying-brain-tumors-using-x-ray-images",
+            video: "",
+            gallery: ["images/project2.png"],
+            dataset: "https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset",
+            fullDescription: "An advanced computer vision project using deep learning to detect and classify brain tumors. The model was trained on thousands of MRI/X-ray images to achieve high accuracy."
         },
         {
             title: "Automated Online Ordering System using GenAI",
             image: "images/project3.png",
             description: "A GenAI-powered system that automates online product ordering by understanding user inputs and generating responses.",
             tags: ["Python", "GenAI", "NLP"],
-            link: "https://github.com/SonuSuraj1807/Automated-online-ordering-system-using-GenAI"
+            link: "https://github.com/SonuSuraj1807/Automated-online-ordering-system-using-GenAI",
+            video: "",
+            gallery: ["images/project3.png"],
+            dataset: "",
+            fullDescription: "This project demonstrates the power of Generative AI in streamlining e-commerce. It uses natural language processing to understand complex customer queries and automate the ordering process."
         },
         {
             title: "Digital Library Management System",
             image: "images/LMS.png",
             description: "A comprehensive library management system that streamlines book issuance, return, and inventory tracking processes.",
             tags: ["Java Script", "HTML", "CSS"],
-            link: "https://github.com/SonuSuraj1807/Digital-Library-Management"
+            link: "https://github.com/SonuSuraj1807/Digital-Library-Management",
+            video: "",
+            gallery: ["images/LMS.png"],
+            dataset: "",
+            fullDescription: "A full-stack web application designed for modern libraries. Features include user authentication, book cataloging, and automated due-date notifications."
         }
     ],
 
